@@ -150,39 +150,13 @@
             <!-- Details will be populated by JavaScript -->
         </div>
         
-        <button onclick="location.href='myapp://payment-success';window.close();">
+        <button onclick="window.close();">
           Return to App
         </button>
     </div>
     
     <script>
-        window.location.href = "myapp://payment-success";
-        // Parse query parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const sessionId = urlParams.get('session_id') || 'N/A';
-        const amount = urlParams.get('amount') || 'N/A';
-        const currency = urlParams.get('currency') || 'USD';
-        const paymentIntent = urlParams.get('payment_intent') || 'N/A';
-        
-        // Populate details
-        const detailsContainer = document.getElementById('paymentDetails');
-        
-        const details = [
-            { label: 'Session ID', value: sessionId },
-            { label: 'Amount', value: amount !== 'N/A' ? `${amount} ${currency.toUpperCase()}` : 'N/A' },
-            { label: 'Payment Intent', value: paymentIntent },
-            { label: 'Status', value: 'Completed' }
-        ];
-        
-        details.forEach(detail => {
-            const item = document.createElement('div');
-            item.className = 'detail-item';
-            item.innerHTML = `
-                <span class="detail-label">${detail.label}:</span>
-                <span class="detail-value">${detail.value}</span>
-            `;
-            detailsContainer.appendChild(item);
-        });
+        window.close();
     </script>
 </body>
 </html>
