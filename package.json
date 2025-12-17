@@ -1,0 +1,22 @@
+{
+  "name": "emobiq-stripe-plugin-callback",
+  "version": "1.0.0",
+  "description": "Landing app for receiving callbacks from Emobiq AI Stripe plugin",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "emobiq",
+    "stripe",
+    "callback",
+    "payment"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-rate-limit": "^8.2.1"
+  }
+}
