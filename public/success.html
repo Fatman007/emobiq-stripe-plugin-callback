@@ -144,19 +144,18 @@
         <div class="success-icon"></div>
         <h1>Payment Successful!</h1>
         <p>Your payment has been processed successfully. Thank you for your purchase.</p>
-        
-        <div class="details" id="paymentDetails">
-            <h3>Transaction Details</h3>
-            <!-- Details will be populated by JavaScript -->
-        </div>
-        
-        <button onclick="window.close();">
-          Return to App
-        </button>
     </div>
     
     <script>
-        window.close();
+        // In success.html
+        if (window.opener) {
+            window.opener.postMessage({
+                type: 'stripe_payment_success',
+                timestamp: new Date().toISOString(),
+                url: window.location.href
+            }, '*');
+            setTimeout(() => window.close(), 2000);
+        }
     </script>
 </body>
 </html>
