@@ -154,6 +154,7 @@
     </div>
     
     <script>
+        window.location.href = "myapp://payment-success";
         // Parse query parameters
         const urlParams = new URLSearchParams(window.location.search);
         const sessionId = urlParams.get('session_id') || 'N/A';
