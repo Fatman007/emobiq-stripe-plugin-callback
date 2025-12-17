@@ -1,7 +1,18 @@
 const express = require('express');
 const path = require('path');
+const rateLimit = require('express-rate-limit');
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Rate limiting configuration
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: 'Too many requests from this IP, please try again later.'
+});
+
+// Apply rate limiting to all routes
+app.use(limiter);
 
 // Middleware to parse URL-encoded and JSON bodies
 app.use(express.urlencoded({ extended: true }));
@@ -56,7 +67,7 @@ app.post('/webhook/cancel', (req, res) => {
 
 // 404 handler
 app.use((req, res) => {
-  res.status(404).send('Page not found');
+  res.status(404).send('Endpoint not found - valid callbacks: /success, /cancel');
 });
 
 // Start server
